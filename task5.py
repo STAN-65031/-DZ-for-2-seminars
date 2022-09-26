@@ -18,7 +18,7 @@ def InputNumbers(inputText):
 
 def fillsList(num):
     num_list = []
-    for i in range(num + 1):
+    for i in range(num):
         num_list.append(round(i))
     return num_list
 
