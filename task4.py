@@ -17,8 +17,9 @@ def InputNumbers(inputText):
     return number
 
 
-def inputKoord(x):
+def inputKoord(x, roster):
     a = [0] * x
+    coverage = len(roster)
     for i in range(x):
         is_OK = False
         while not is_OK:
@@ -26,6 +27,9 @@ def inputKoord(x):
                 number = int(input(f"Введите {i+1} позицию числа: "))
                 a[i] = number
                 is_OK = True
+                if number > coverage or number < 0:
+                    is_OK = False
+                    print("Такой позиции нет! ") 
             except ValueError:
                 print("Ты ошибся. Вводить надо числа!")
     return a
@@ -34,7 +38,7 @@ def inputKoord(x):
 def fillsList(num):
     num_list = []
     for i in range(-num, num + 1):
-        num_list.append(round(i))
+        num_list.append(i)
     return num_list
 
 
@@ -44,6 +48,7 @@ def findPiece(position, list):
 
 
 num = InputNumbers("Ведите число для заполнения списка: ")
-print(fillsList(num))
-position = inputKoord(2)
+list = fillsList(num)
+print(list)
+position = inputKoord(2,list)
 print(findPiece(position, fillsList(num)))
